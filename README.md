@@ -1,0 +1,2 @@
+Python3を用いたDNNの学習　
+参考：ゼロから作るDeepLearning Pythonで学ぶディープラーニングの理論と実装
