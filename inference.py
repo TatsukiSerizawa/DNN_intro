@@ -14,6 +14,7 @@ def get_data():
         load_mnist(normalize = True, flatten = True, one_hot_label = False)
     return x_test,t_test
 
+#学習済みの重みパラメータを読み込む
 def init_network():
     with open("sample_weight.pkl", 'rb') as f:
         network = pickle.load(f)
@@ -32,14 +33,15 @@ def predict(network, x):
 
     return y
 
+
 x, t = get_data()
 network = init_network()
 
 accuracy_cnt = 0
 for i in range(len(x)):
-    y = predict(network, x[i])
+    y = predict(network, x[i]) #NNで分類処理
     p = np.argmax(y) #最も確率の高い要素のインデックスを取得
-    if p == t[i]:
+    if p == t[i]: #正解ラベルと比較して同じ（正解）なら+1
         accuracy_cnt += 1
 
-print("Accuracy:" + str(float(accuracy_cnt) / len(x)))
+print("Accuracy:" + str(float(accuracy_cnt) / len(x))) #認識精度
