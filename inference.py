@@ -37,11 +37,16 @@ def predict(network, x):
 x, t = get_data()
 network = init_network()
 
+batch_size = 100 #バッチの数
 accuracy_cnt = 0
-for i in range(len(x)):
-    y = predict(network, x[i]) #NNで分類処理
-    p = np.argmax(y) #最も確率の高い要素のインデックスを取得
-    if p == t[i]: #正解ラベルと比較して同じ（正解）なら+1
-        accuracy_cnt += 1
+
+for i in range(0, len(x), batch_size): #100枚ずつバッチとして取り出す
+    x_batch = x[i:i+batch_size]
+    y_batch = predict(network, x_batch) #NNで分類処理
+    p = np.argmax(y_batch, axis = 1) #最も確率の高い要素のインデックスを取得
+    accuracy_cnt += np.sum(p == t[i:i+batch_size]) #正解ラベルと比較して同じ（正解）なら+1
+#    y = predict(network, x[i]) #NNで分類処理
+#    if p == t[i]: #正解ラベルと比較して同じ（正解）なら+1
+#        accuracy_cnt += 1
 
 print("Accuracy:" + str(float(accuracy_cnt) / len(x))) #認識精度
