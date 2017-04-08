@@ -12,6 +12,7 @@ from sigmoid_ReLU import sigmoid
 def get_data():
     (x_train, t_train),(x_test, t_test) = \
         load_mnist(normalize = True, flatten = True, one_hot_label = False)
+
     return x_test,t_test
 
 #学習済みの重みパラメータを読み込む
