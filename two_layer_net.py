@@ -8,7 +8,7 @@ from gradient2 import numerical_gradient
 class TwoLayerNet:
 
     #初期化を行うメソッド(入力層ニューロン数，隠れ層ニューロン数，出力層ニューロン数)
-    def __init__(self, input_size, hidden_size, output_size, weight_init_std=0.01):
+    def __init__(self, input_size, hidden_size, output_size, weight_init_std = 0.01):
         #重みの初期化
         self.params = {}
         self.params['W1'] = weight_init_std * np.random.randn(input_size, hidden_size) #1層目の重み
@@ -16,7 +16,7 @@ class TwoLayerNet:
         self.params['W2'] = weight_init_std * np.random.randn(hidden_size, output_size) #2層目の重み
         self.params['b2'] = np.zeros(output_size) #2層目のバイアス
 
-        #認識（推論）を行うメソッド(xは画像データ)
+    #認識（推論）を行うメソッド(xは画像データ)
     def predict(self, x):
         W1, W2 = self.params['W1'], self.params['W2']
         b1, b2 = self.params['b1'], self.params['b2']
@@ -33,7 +33,7 @@ class TwoLayerNet:
     #損失関数の値を求めるメソッド
     def loss(self, x, t):
         y = self.predict(x)
-        return cross_entropy_error(y, t)
+        return cross_entropy_error(y, t) #交差エントロピー誤差関数の結果の値を返す
     
     #認識精度を求めるメソッド
     def accuracy(self, x, t):
@@ -82,6 +82,9 @@ class TwoLayerNet:
 
         return grads
 
+#重みとバイアス
 net = TwoLayerNet(input_size = 784, hidden_size = 100, output_size = 10)
 print(net.params['W1'].shape)
 print(net.params['b1'].shape)
+print(net.params['W2'].shape)
+print(net.params['b2'].shape)
