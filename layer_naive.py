@@ -17,6 +17,7 @@ class MulLayer:
         dy = dout * self.x
         return dx, dy
 
+
 #加算レイヤ(順伝播・逆伝播)
 class AddLayer:
     def __init__(self):
