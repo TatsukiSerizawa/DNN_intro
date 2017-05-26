@@ -1,5 +1,6 @@
 # coding: utf-8
 import numpy as np
+from functions import *
 
 #ReLUレイヤ
 class Relu:
@@ -91,8 +92,8 @@ class SoftmaxWithLoss:
         return dx
 
 
-x = np.array([[1.0, -0.5], [-2.0, 3.0]])
-print(x)
+#x = np.array([[1.0, -0.5], [-2.0, 3.0]])
+#print(x)
 
-mask = (x <= 0)
-print(mask)
+#mask = (x <= 0)
+#print(mask)
